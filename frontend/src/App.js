@@ -54,6 +54,7 @@ function SignUpForm() {
       />
 
       <input 
+        type='email'
         value={userEmail} 
         className='homeInput'
         onChange={(e) => setEmail(e.target.value)}
@@ -61,6 +62,7 @@ function SignUpForm() {
       />
 
       <input 
+        type='password'
         value={password} 
         className='homeInput'
         onChange={(e) => setPassowrd(e.target.value)}
