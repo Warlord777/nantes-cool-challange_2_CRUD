@@ -37,6 +37,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 10px;
 }
 
 .mainHeader {
@@ -81,13 +82,14 @@ body {
   text-align: center;
   height: 50px;
   width: 125px;
-  
+  border-radius: 20px;
 
   cursor: pointer;
 }
 
 .mainButton:hover {
-  background-color: rgb(24, 24, 24);
+  background-color: rgb(218, 224, 228);
+  color: rgb(59, 59, 59);
 }
 
 @keyframes App-logo-spin {

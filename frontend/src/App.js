@@ -1,6 +1,8 @@
 import { useState, useTransition } from 'react';
 import './App.css';
 
+
+
 function App() {
 
   const [window, setWindow] = useState("home");
@@ -23,9 +25,10 @@ function App() {
       <button type="button" onClick={() => setWindow("signup")} class="mainButton">
         Sign Up
       </button>
-      <button type="button" onClick={() => setWindow("login")} class="mainButton">
+      <button type="button" onClick={() => setWindow("login")} className="mainButton">
         Login
       </button>
+
         </>
       )}
 
@@ -40,6 +43,29 @@ function SignUpForm() {
   const [username, setUsername] = useState("");
   const [password, setPassowrd] = useState("");
   const [userEmail, setEmail] = useState("");
+
+  const handleSubmit = async () => {
+    const userInfoToPost = { username, userEmail, password }
+    console.log ( userEmail, username, password )
+
+    try {
+      const res = await fetch("https://42bd0jt1ff.execute-api.us-east-1.amazonaws.com/signup", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(userInfoToPost),
+      });
+
+      const data = await res.json();
+      console.log("Server says:", data);
+
+      // Clear password from state immediately
+      setPassowrd("")
+    } catch (err) {
+      console.error("Error sending signup:", err);
+    }
+  }
 
   return (
     <div className='form'>
@@ -69,7 +95,9 @@ function SignUpForm() {
         placeholder='Password'
       />
 
-      <input type="submit" className='mainButton' />
+      <button type="button" onClick={handleSubmit} className="mainButton">
+        Submit
+      </button>
 
     </div>
   );
